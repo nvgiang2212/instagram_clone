@@ -23,14 +23,13 @@ const Stories = () => {
 
     return (
         <View style={styles.stories}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <FlatList
-                    data={USERS}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => `${item.user}`}
-                    horizontal={true}
-                ></FlatList>
-            </ScrollView>
+            <FlatList
+                data={USERS}
+                renderItem={renderItem}
+                keyExtractor={(item) => `${item.user}`}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+            ></FlatList>
         </View>
     );
 };
