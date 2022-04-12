@@ -1,15 +1,30 @@
-import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+    Text,
+    View,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    Platform,
+    FlatList,
+} from "react-native";
 import React from "react";
 import { Divider } from "react-native-elements";
-import { IconFooter } from "../../data/icons";
+import { PostFooterIcons } from "../../data/icons";
 
 const Post = ({ post }) => {
     return (
-        <View style={{ marginBottom: 30 }}>
+        <View style={{ marginBottom: 20 }}>
             <Divider width={1} orientation="vertical" />
             <PostHeader post={post} />
             <PostImage post={post} />
-            <PostFooter />
+            <View style={{ marginHorizontal: 15, marginTop: 10 }}>
+                <PostFooter />
+                <Likes post={post} />
+                <Caption post={post} />
+                <CommentSection post={post} />
+                <Comments post={post} />
+                <TimePost post={post} />
+            </View>
         </View>
     );
 };
@@ -40,16 +55,101 @@ const PostImage = ({ post }) => {
 
 const PostFooter = () => {
     return (
-        <Icon imgStyle={styles.footerIcon} imgUrl={IconFooter[0].imageUrl} />
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <View style={styles.leftFooterIconsContainer}>
+                <Icon
+                    imgStyle={styles.footerIcon}
+                    imgUrl={PostFooterIcons[0].imageUrl}
+                />
+                <Icon
+                    imgStyle={[styles.footerIcon, styles.commentIcon]}
+                    imgUrl={PostFooterIcons[1].imageUrl}
+                />
+                <Icon
+                    imgStyle={[styles.footerIcon, styles.shareIcon]}
+                    imgUrl={PostFooterIcons[2].imageUrl}
+                />
+            </View>
+            <View style={{ flex: 1, alignItems: "flex-end" }}>
+                <Icon
+                    imgStyle={styles.footerIcon}
+                    imgUrl={PostFooterIcons[3].imageUrl}
+                />
+            </View>
+        </View>
     );
 };
 
 const Icon = ({ imgStyle, imgUrl }) => {
     return (
         <TouchableOpacity>
-            <Image style={imgStyle} source={{ uir: imgUrl }} />
+            <Image style={imgStyle} source={{ uri: imgUrl }} />
         </TouchableOpacity>
     );
+};
+
+const Likes = ({ post }) => {
+    return (
+        <View>
+            <Text style={{ fontWeight: "600", marginTop: 8 }}>
+                {Platform.OS === "ios"
+                    ? post.likes.toLocaleString("en")
+                    : post.likes
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                likes
+            </Text>
+        </View>
+    );
+};
+
+const Caption = ({ post }) => {
+    return (
+        <View style={{ marginTop: 3 }}>
+            <Text>
+                <Text style={{ fontWeight: "600" }}>{post.user}</Text>{" "}
+                <Text>{post.caption}</Text>
+            </Text>
+        </View>
+    );
+};
+
+const CommentSection = ({ post }) => {
+    return (
+        <View style={{ marginTop: 5 }}>
+            {!!post.comments.length && (
+                <Text style={{ color: "gray" }}>
+                    View {post.comments.length > 1 ? "all" : ""}{" "}
+                    {post.comments.length}{" "}
+                    {post.comments.length > 1 ? "comments" : "comment"}
+                </Text>
+            )}
+        </View>
+    );
+};
+
+const Comments = ({ post }) => {
+    const renderItem = ({ item, index }) => {
+        return (
+            <View key={index} style={{ flexDirection: "row", marginTop: 5 }}>
+                <Text>
+                    <Text style={{ fontWeight: "600" }}>{item.user}</Text>
+                    <Text> {item.comment}</Text>
+                </Text>
+            </View>
+        );
+    };
+    return (
+        <FlatList
+            data={post.comments}
+            renderItem={renderItem}
+            keyExtractor={(item) => `${Math.random()}`}
+        />
+    );
+};
+
+const TimePost = ({ post }) => {
+    return <Text style={{ marginTop: 5, color: "gray" }}>{post.time}</Text>;
 };
 
 export default Post;
@@ -87,8 +187,19 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
     },
     footerIcon: {
-        width: 33,
-        height: 33,
-        // backgroundColor: 'black'
+        width: 28,
+        height: 28,
+    },
+    commentIcon: {
+        transform: [{ scaleX: -1 }],
+    },
+    shareIcon: {
+        // transform: [{ rotate: "20deg" }],
+        // marginTop: -3,
+    },
+    leftFooterIconsContainer: {
+        flexDirection: "row",
+        width: "30%",
+        justifyContent: "space-between",
     },
 });

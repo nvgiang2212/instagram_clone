@@ -1,10 +1,18 @@
-import { ScrollView, StyleSheet, StatusBar, FlatList } from "react-native";
+import {
+    ScrollView,
+    StyleSheet,
+    StatusBar,
+    FlatList,
+    View,
+} from "react-native";
 import React from "react";
 import Header from "../components/home/Header";
 import Stories from "../components/home/Stories";
 import Post from "../components/home/Post";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { POSTS } from "../data/posts";
+import BottomTabs from "../components/home/BottomTabs";
+import { BottomTabIcons } from "../data/icons";
 
 const HomeScreen = () => {
     const renderItem = ({ item, index }) => {
@@ -16,15 +24,20 @@ const HomeScreen = () => {
             <StatusBar />
             <Header />
 
-            {/* <ScrollView showsVerticalScrollIndicator={false}> */}
-            <Stories />
-            <FlatList
-                data={POSTS}
-                renderItem={renderItem}
-                keyExtractor={(item) => `${Math.random()}`}
+            <ScrollView
                 showsVerticalScrollIndicator={false}
-            ></FlatList>
-            {/* </ScrollView> */}
+                nestedScrollEnabled={true}
+            >
+                <Stories />
+                <FlatList
+                    data={POSTS}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => `${Math.random()}`}
+                    showsVerticalScrollIndicator={false}
+                ></FlatList>
+            </ScrollView>
+
+            <BottomTabs icons={BottomTabIcons} />
         </SafeAreaView>
     );
 };

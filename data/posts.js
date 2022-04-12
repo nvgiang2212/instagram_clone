@@ -5,19 +5,34 @@ export const POSTS = [
         imageUrl:
             "https://revelogue.com/wp-content/uploads/2019/12/Hinh-anh-dai-dien-Spirited-Away-e1576918534167.jpg",
         user: USERS[0].user,
-        likes: 454,
-        caption: "Spirited Away !!!",
+        likes: 99454,
+        caption:
+            "Spirited Away !!! Spirited Away (Japanese: 千と千尋の神隠し, Hepburn: Sen to Chihiro no Kamikakushi, 'Sen and Chihiro's Spiriting Away') is a 2001 Japanese animated fantasy film written and directed by Hayao Miyazaki, animated by Studio Ghibli for Tokuma Shoten, Nippon Television Network, Dentsu, Buena Vista Home Entertainment, Tohokushinsha Film, and Mitsubishi and distributed by Toho",
         profile_picture: USERS[0].image,
         comments: [
             {
                 user: USERS[2].user,
-                comment: "qua hay ban oi",
+                comment:
+                    "Những câu nói trên đầu môi, phải chăng người trao cho riêng mình tôi",
             },
             {
                 user: USERS[4].user,
-                comment: "ultr",
+                comment: "Dẫu đã biết anh không hề yêu",
+            },
+            {
+                user: USERS[3].user,
+                comment: "Nhưng vẫn mơ mộng nhiều (vẫn mơ mộng nhiều)",
+            },
+            {
+                user: USERS[5].user,
+                comment: "Vì anh lạnh lùng băng giá, còn tôi con tim thật thà",
+            },
+            {
+                user: USERS[1].user,
+                comment: "Nên mình tôi ôm lòng đêm nhức nhối",
             },
         ],
+        time: "10 phút trước",
     },
     {
         imageUrl:
@@ -29,48 +44,38 @@ export const POSTS = [
         comments: [
             {
                 user: USERS[5].user,
-                comment: "phim cung hay nhung ko hay lam",
-            },
-            {
-                user: USERS[6].user,
-                comment: "3.5.0.8",
+                comment: "fim cung~ hay nhg toi o thik",
             },
         ],
+        time: "56 phút trước",
     },
     {
         imageUrl:
             "https://sachhay24h.com/uploads/images/hang-xom-toi-la-totoro-my-neighbor-totoro-0.jpg",
         user: USERS[2].user,
-        likes: 54,
+        likes: 854,
         caption: "Totoro !!!",
         profile_picture: USERS[2].image,
-        comments: [
-            {
-                user: USERS[1].user,
-                comment: "ghilbi muon nam",
-            },
-            {
-                user: USERS[4].user,
-                comment: "ai cha cha",
-            },
-        ],
+        comments: [],
+        time: "2 giờ trước",
     },
     {
         imageUrl: "https://cdn-amz.fadoglobal.io/images/I/81Mn91Y+XyL.jpg",
         user: USERS[3].user,
-        likes: 15,
+        likes: 1012515,
         caption: "Howls moving castle !!!",
         profile_picture: USERS[3].image,
         comments: [
             {
                 user: USERS[2].user,
-                comment: "qua hay ban oi",
+                comment: "bạn yếu là do bạn không chơi đồ đấy",
             },
             {
                 user: USERS[4].user,
                 comment: "ultr",
             },
         ],
+        time: "3 giờ trước",
     },
     {
         imageUrl: "https://i.ytimg.com/vi/1o_MjaF_E2o/maxresdefault.jpg",
@@ -85,9 +90,10 @@ export const POSTS = [
             },
             {
                 user: USERS[1].user,
-                comment: "ve xem dat vai nong",
+                comment: "ve' re? vai~",
             },
         ],
+        time: "3 giờ trước",
     },
     {
         imageUrl:
@@ -106,6 +112,7 @@ export const POSTS = [
                 comment: "bap ma anh khen ngon la bap dui em",
             },
         ],
+        time: "4 giờ trước",
     },
     {
         imageUrl:
@@ -124,5 +131,6 @@ export const POSTS = [
                 comment: "I can knockout Chaien",
             },
         ],
+        time: "5 giờ trước",
     },
 ];
