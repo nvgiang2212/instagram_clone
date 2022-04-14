@@ -47,3 +47,10 @@ export const BottomTabIcons = [
             "https://dragonball.guru/wp-content/uploads/2021/01/goku-dragon-ball-guru.jpg",
     },
 ];
+
+export const DirectionIcon = [
+    {
+        name: "Back",
+        imageUrl: "https://img.icons8.com/ios-glyphs/30/000000/back.png",
+    },
+];
