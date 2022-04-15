@@ -4,7 +4,6 @@ import {
     TextInput,
     View,
     Image,
-    Button,
     Platform,
     TouchableOpacity,
     Switch,
@@ -140,12 +139,12 @@ const SwitchButtonRow = ({ user, imageUrl, appName }) => {
     );
 };
 
-const Address = ({ item, key }) => {
+const Address = ({ item }) => {
     return (
         <View
             style={{
-                width: 180,
-                height: 30,
+                maxWidth: 200,
+                height: 32,
                 backgroundColor: "lightgrey",
                 marginHorizontal: 3,
                 justifyContent: "center",
@@ -153,10 +152,7 @@ const Address = ({ item, key }) => {
                 borderRadius: 15,
             }}
         >
-            <Text
-                numberOfLines={1}
-                style={{ width: "100%", paddingHorizontal: 10 }}
-            >
+            <Text numberOfLines={1} style={{ paddingHorizontal: 10 }}>
                 {item.address}
             </Text>
         </View>
@@ -238,7 +234,7 @@ const FormikPostUploader = () => {
                     <ScrollView
                         horizontal
                         showsHorizontalScrollIndicator={false}
-                        style={{ marginBottom: 5, marginHorizontal: 10 }}
+                        style={{ marginBottom: 5, marginHorizontal: 5 }}
                     >
                         {locationList.map((item, index) => {
                             return <Address key={index} item={item} />;

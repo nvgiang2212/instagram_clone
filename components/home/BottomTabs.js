@@ -35,23 +35,31 @@ const BottomTabs = ({ icons }) => {
     };
 
     const renderItem = ({ item, index }) => {
-        return <Icon icon={item} key={index} />;
+        return;
     };
 
     return (
         <View style={styles.wrapper}>
             <Divider width={1} orientation="vertical" />
             <View style={styles.container}>
-                <FlatList
+                <View
+                    style={{
+                        flexDirection: "row",
+                        justifyContent: "space-around",
+                    }}
+                >
+                    {icons.map((item, index) => (
+                        <Icon icon={item} key={index} />
+                    ))}
+                </View>
+
+                {/* <FlatList
                     data={icons}
                     renderItem={renderItem}
                     keyExtractor={(item) => `${Math.random()}`}
                     horizontal
-                    contentContainerStyle={{
-                        flexGrow: 1,
-                        justifyContent: "space-around",
-                    }}
-                />
+                    contentContainerStyle={{}}
+                /> */}
             </View>
         </View>
     );

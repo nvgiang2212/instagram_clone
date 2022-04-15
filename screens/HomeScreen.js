@@ -14,27 +14,20 @@ import { POSTS } from "../data/posts";
 import BottomTabs from "../components/home/BottomTabs";
 import { BottomTabIcons } from "../data/icons";
 
-const HomeScreen = () => {
-    const renderItem = ({ item, index }) => {
-        return <Post post={item} indexKey={index} />;
-    };
-
+const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar />
-            <Header />
+            <Header navigation={navigation} />
 
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 nestedScrollEnabled={true}
             >
                 <Stories />
-                <FlatList
-                    data={POSTS}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => `${Math.random()}`}
-                    showsVerticalScrollIndicator={false}
-                ></FlatList>
+                {POSTS.map((post, index) => (
+                    <Post post={post} key={index} />
+                ))}
             </ScrollView>
 
             <BottomTabs icons={BottomTabIcons} />
